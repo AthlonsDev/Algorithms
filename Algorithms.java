@@ -110,6 +110,7 @@ public class Algorithms {
         int count  = 0;
 
         for (int i = 0; i < two_dim_arr.length; i++) {
+
             for(int j = 0; j < two_dim_arr[i].length; j++)
             {
                 two_dim_arr[i][j] = count++;
@@ -118,6 +119,7 @@ public class Algorithms {
 
         }
         for (int i = 0; i < two_dim_arr.length; i++) {
+            
             for (int j = 0; j < two_dim_arr.length; j++) {
                 System.out.println(two_dim_arr[i][j] + " ");
             }
@@ -139,14 +141,14 @@ public class Algorithms {
         System.out.println(Arrays.toString(new_array));
 
         // without using an array
-        for (int i = myArray.length-1; i >= 0; i--) {
-            // System.out.println(myArray[i]);
+        for(int i = 0; i < myArray.length / 2; i++) {
+{
             store = myArray[i];
-            System.out.println(store);
-            for(int j = 0; j > myArray.length; j++) {
-                myArray[myArray.length] = store;
-            }
+            myArray[i] = myArray[myArray.length - i - 1];
+            myArray[myArray.length - i - 1] = store;
+}
         }
+       
         System.out.println(Arrays.toString(myArray));
     }
 
