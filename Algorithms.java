@@ -1,12 +1,15 @@
 import java.util.*;
+import java.util.Collection;
 
 
 public class Algorithms {
 
     public static void main(String[] args) {
 	// write your code here
-       manage2DArray();
-        reverse_array();
+    //    jaggedArray();
+    //    reverse_array();
+        reversingArrays();
+        // new_jagged_array();
     }
 
 
@@ -40,21 +43,20 @@ public class Algorithms {
 
     }
 
-    private static void manage2DArray() {
+    private static void jaggedArray() {
 
 //    create 2d array of 10 col and increasing number of rows
         int two_dim_arr [][] = new int[10][10];
         int cols = two_dim_arr.length;
-//        int rows = two_dim_arr[0].length;
 
         for (int i = 0; i < cols; i++) {
 
             for (int j = 0; j < i + 1; j++) {
 
-                int x = (i + 1) * (j + 1);
-                two_dim_arr[i][j] = x;
+                int new_row = (i) + (j);
+                two_dim_arr[i][j] = new_row;
 
-                System.out.print(x + "\t");
+                System.out.print(new_row + "\t");
             }
             System.out.println();
         }
@@ -83,19 +85,71 @@ public class Algorithms {
 
 //        reverse without new array
 
-        for (int i = 0; i <= myArray.length - 1; i++) {
+        for (int i = 0; i <= myArray.length+1; i++) {
 
             double store = myArray[i];
             myArray[i] = myArray[myArray.length - i - 1];
             myArray[myArray.length - i - 1] = store;
-
-
 
         }
 
         System.out.println(Arrays.toString(myArray));
 
     }
+
+    private static void new_jagged_array() {
+        int two_dim_arr [][] = new int[10][];
+        two_dim_arr[0] = new int[3];
+        two_dim_arr[1] = new int[5];
+        two_dim_arr[2] = new int[8];
+        two_dim_arr[2] = new int[12];
+
+
+        int cols = two_dim_arr.length;
+
+        int count  = 0;
+
+        for (int i = 0; i < two_dim_arr.length; i++) {
+            for(int j = 0; j < two_dim_arr[i].length; j++)
+            {
+                two_dim_arr[i][j] = count++;
+                System.out.println(two_dim_arr[i][j]);
+            }
+
+        }
+        for (int i = 0; i < two_dim_arr.length; i++) {
+            for (int j = 0; j < two_dim_arr.length; j++) {
+                System.out.println(two_dim_arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+    }
+
+    private static void reversingArrays() {
+        double[] myArray = {8.1, 4.5, 3.1, 7.7, 7.0, 1.2, 9.0};
+        double store = 0;
+        double new_array[] =new double[7];
+        // using a new Array
+        for (int i = myArray.length-1; i >= 0; i--) {
+            System.out.println("insert at index: " + (myArray.length-i-1));
+            new_array[myArray.length-i-1] = myArray[i];
+        }
+        // System.out.println(store);
+        System.out.println(Arrays.toString(new_array));
+
+        // without using an array
+        for (int i = myArray.length-1; i >= 0; i--) {
+            // System.out.println(myArray[i]);
+            store = myArray[i];
+            System.out.println(store);
+            for(int j = 0; j > myArray.length; j++) {
+                myArray[myArray.length] = store;
+            }
+        }
+        System.out.println(Arrays.toString(myArray));
+    }
+
 
 
 }
