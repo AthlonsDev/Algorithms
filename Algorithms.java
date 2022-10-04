@@ -1,11 +1,11 @@
 import java.util.*;
 
 
-public class Main {
+public class Algorithms {
 
     public static void main(String[] args) {
 	// write your code here
-//        manage2DArray();
+       manage2DArray();
         reverse_array();
     }
 
