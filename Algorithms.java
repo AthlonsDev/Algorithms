@@ -8,8 +8,8 @@ public class Algorithms {
 	// write your code here
     //    jaggedArray();
     //    reverse_array();
-        reversingArrays();
-        // new_jagged_array();
+        // reversingArrays();
+        new_jagged_array();
     }
 
 
@@ -98,11 +98,13 @@ public class Algorithms {
     }
 
     private static void new_jagged_array() {
-        int two_dim_arr [][] = new int[10][];
+        int two_dim_arr [][] = new int[3][];
         two_dim_arr[0] = new int[3];
         two_dim_arr[1] = new int[5];
         two_dim_arr[2] = new int[8];
         two_dim_arr[2] = new int[12];
+        two_dim_arr[2] = new int[15];
+    
 
 
         int cols = two_dim_arr.length;
@@ -121,7 +123,7 @@ public class Algorithms {
         for (int i = 0; i < two_dim_arr.length; i++) {
             
             for (int j = 0; j < two_dim_arr.length; j++) {
-                System.out.println(two_dim_arr[i][j] + " ");
+                System.out.println(two_dim_arr[i][j] + "\t");
             }
             System.out.println();
         }
