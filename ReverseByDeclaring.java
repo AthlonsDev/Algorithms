@@ -8,7 +8,7 @@ public class ReverseByDeclaring {
         double new_array[] =new double[7];
         // using a new Array
         for (int i = myArray.length-1; i >= 0; i--) {
-            System.out.println("insert " + i +" at index: " + (myArray.length-i-1));
+            // System.out.println("insert " + i +" at index: " + (myArray.length-i-1));
             new_array[myArray.length-i-1] = myArray[i];
         }
         // System.out.println(store);
