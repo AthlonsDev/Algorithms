@@ -1,7 +1,5 @@
 import java.util.*;
 
-// import org.w3c.dom.Node;
-
 
 public class Algorithms {
 
@@ -15,8 +13,11 @@ public class Algorithms {
         // new_jagged_array();
         Algorithms myObj = new Algorithms();
 
+     
 
     }
+
+    
 
 
     private static void findMin_Max_Value() {

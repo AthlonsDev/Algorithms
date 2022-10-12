@@ -10,18 +10,6 @@ public class LinkedList {
 
     public static void main(String[] args) {
         LinkedList myObj = new LinkedList();
-        // myObj.AddNode(8, true);
-        // myObj.AddNode(7, false);
-        // myObj.AddNode(11, false);
-        // myObj.AddNode(4, false);
-        // myObj.AddNode(9, false);
-        // myObj.AddNode(2, false);
-        // myObj.AddNode(14, false);
-        // myObj.AddNode(1, false);
-        // myObj.AddNode(5, false);
-
-        // myObj.print_all_data();
-
 
          // Task 2: Ask for user input to form linked list
          Scanner sc = new Scanner(System.in);
@@ -34,17 +22,16 @@ public class LinkedList {
              myObj.addNodeByUser(sc.nextInt(), false);
              
          }
-         System.out.println(myObj.GetSize());
          myObj.PrintMe();
 
         // //  Task 3: Print value from index
-        // System.out.println("Select index from which to print");
-        // int index = sc.nextInt();
-        // myObj.PrintFromIndex(index);
+        System.out.println("Select index from which to print");
+        int index = sc.nextInt();
+        myObj.PrintFromIndex(index);
 
         // Task 4: Delete Node from head or tail
         System.out.println("Should the element be removed from the head?");
-        boolean removeHead = sc.hasNextBoolean();
+        boolean removeHead = sc.nextBoolean();
         
         myObj.DeleteItemFromList(removeHead);
 
@@ -52,17 +39,33 @@ public class LinkedList {
 
     public void DeleteItemFromList(boolean flag) {
 
-        // delete from head
+        // if head is not found = list is empty
+        if(head == null) {
+            System.out.println("Linked list is empty");
+        }
+
+        NodeList temp = head;
+        // if falge is true delete from head
         if (flag) {
-            NodeList temp = head;
+            // get pointer
             head = head.GetNext();
+            // set pointer to null
             temp.SetNext(null);
             size--;
         }
         // delete from tail
         else {
+            //loop through list to find tail = when getnext is null
             for (int i = 0; i < size; i++) {
-                // TODO: loop through list to find tail = when getnext is null
+                // if the pointer of the node null
+                if(temp.GetNext() == null) {
+                    System.out.println("found the tail - Deleting...");
+                    // set pointer to tail - unnecessary, the pointer of the tail is always null
+                    temp.SetNext(tail);
+                    size--;
+                }
+                // if the tail is not found proceed with next node
+                temp = temp.GetNext();
             }
         }
         PrintMe();
@@ -87,76 +90,43 @@ public class LinkedList {
 
     public void addNodeByUser(int data, boolean flag) {
         if (head == null) { //add first node as head, if there's no head
+        // set head to new node with data and no pointer
         head = new NodeList(data, null);
+        // for now head is also tail
         tail = head;
         size++;
         return;
         }
+    // one item is present so adds items at head
     NodeList Temp = new NodeList(data, null);
-    if (flag) { //add node at head
+    if (flag) { 
+        // here the pointer will be head, this places the new node in front of the previous
         Temp.SetNext(head);
         head = Temp;
-    } else { //add node at tail
+    // adds items at tail
+    } else { 
+        // pointer will be temp which is null so it will be placed behind prevoius element
         tail.SetNext(Temp);
         tail = Temp;
     }
     size++;
     }
 
-    public void AddNode(int data, boolean flag) {
-         if (head == null) { //add first node as head, if there's no head
-            head = new NodeList(data, null);
-            tail = head;
-            size++;
-            return;
-        }
-        NodeList Temp = new NodeList(data, null);
-        if (flag == true) { //add node at head
-            Temp.SetNext(head);
-            head = Temp;
-        } else { //add node at tail
-            tail.SetNext(Temp);
-            tail = Temp;
-        }
-        size++;
-
-    }
-
-    public int get_data(int index, boolean print) {
-        if (index <= 0) {
-            return 0;
-        }
-
-        NodeList Current = head;
-// pass through list to reach destination until index == value entered at which point stops the loop and executes method
-        for (int i = 1; i < index; i++) {
-            // if getnext return 0 it means the list is empty
-            if(Current.GetNext() == null) {
-                return 0;
-            }
-            // not 0 so keeps going forward on the list
-            Current = Current.GetNext();    
-        }
-        // the destination is reached and th emethod getdata that gives corresponding data gets called
-        return Current.GetData();
-    }
-
     public void PrintMe() {
         NodeList Current = head;
-        int returnValue = 0;
+        int nodeData = 0;
 
         for (int i = 0; i < size; i++) {
-            returnValue = Current.GetData();
-            System.out.print(returnValue + "-->");
+            // stores the data of the current element
+            nodeData = Current.GetData();
+            // prints data of current element
+            System.out.print(nodeData + "-->");
+            // current element, using pointer, passes to the next element
             Current = Current.GetNext();
 
         }
+        
         System.out.println("null");
     }
-
-    public int GetSize() {
-        return size;
-    }
-
 
 }
