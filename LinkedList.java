@@ -74,12 +74,12 @@ public class LinkedList {
 
     public void PrintFromIndex(int index) {
         NodeList Current = head;
-        int returnValue = 0;
+        int nodeData = 0;
 
         for (int i = 0; i < size; i++) {
             if(i == index) {
-                returnValue = Current.GetData();
-                System.out.print(returnValue + "-->");
+                nodeData = Current.GetData();
+                System.out.print(nodeData + "-->");
                 return;
             }
             Current = Current.GetNext();
@@ -92,12 +92,13 @@ public class LinkedList {
         if (head == null) { //add first node as head, if there's no head
         // set head to new node with data and no pointer
         head = new NodeList(data, null);
-        // for now head is also tail
+        // for now head is also tail - there is only one value
         tail = head;
         size++;
         return;
         }
     // one item is present so adds items at head
+    // the only node is now temp
     NodeList Temp = new NodeList(data, null);
     if (flag) { 
         // here the pointer will be head, this places the new node in front of the previous
