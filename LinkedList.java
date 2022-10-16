@@ -10,10 +10,32 @@ public class LinkedList {
 
     public static void main(String[] args) {
         LinkedList myObj = new LinkedList();
+        Scanner sc = new Scanner(System.in);
 
-         // Task 2: Ask for user input to form linked list
-         Scanner sc = new Scanner(System.in);
-         System.out.println("Insert size of Linked List");
+
+         //Ask for user input to form linked list
+         myObj.InputToList(myObj, sc);
+         
+
+        //Print All LinkedList
+         myObj.PrintMe();
+
+
+        //Print value from index
+        System.out.println("Select index from which to print");
+        int index = sc.nextInt();
+        myObj.PrintFromIndex(index);
+
+
+        //Delete Node from head or tail
+        System.out.println("Should the element be removed from the head? True/False");
+        boolean removeHead = sc.nextBoolean();
+        myObj.DeleteItemFromList(removeHead);
+
+    }
+
+    public void InputToList(LinkedList myObj, Scanner sc) {
+        System.out.println("Insert size of Linked List");
          myObj.maxSize = sc.nextInt();
  
          System.out.println("Insert Number to Place in The Linked List");
@@ -22,19 +44,6 @@ public class LinkedList {
              myObj.addNodeByUser(sc.nextInt(), false);
              
          }
-         myObj.PrintMe();
-
-        // //  Task 3: Print value from index
-        System.out.println("Select index from which to print");
-        int index = sc.nextInt();
-        myObj.PrintFromIndex(index);
-
-        // Task 4: Delete Node from head or tail
-        System.out.println("Should the element be removed from the head?");
-        boolean removeHead = sc.nextBoolean();
-        
-        myObj.DeleteItemFromList(removeHead);
-
     }
 
     public void DeleteItemFromList(boolean flag) {

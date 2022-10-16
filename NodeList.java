@@ -4,8 +4,6 @@ public class NodeList {
     // Pointer
     NodeList Next;
 
-    // Constructors
-
     // create new node
     public NodeList(int _data, NodeList _next) {
         Next = _next;
