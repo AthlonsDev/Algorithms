@@ -25,10 +25,18 @@ class SortingAlgorithms {
 
         int arr2[] = { 12, 11, 13, 5, 6, 7 };
 //      Sort by Merge Sort - O(n log n)
-        // obj.mergeSort(arr2, 5, 13);
-        obj.merge(arr2, 12, 13, 7);
+        obj.mergeSort(arr2, 0, arr2.length - 1);
+        // obj.merge(arr2, 12, 13, 7);
+        obj.printArray(arr2, arr2.length);
 
     }
+
+    void printArray(int data[], int n)  
+    {  
+    int i;  
+    for (i = 0; i < n; i++)  
+        System.out.print(data[i] + " ");  
+    }  
 
     public void BubbleSort(int data[]) {
 
@@ -82,38 +90,98 @@ class SortingAlgorithms {
 
     public void mergeSort(int data[], int low, int high) {
 
+    //need to divide array in 2
+    //find the mid value - the pivot
+        // int mid = (low+high)/2;
+
+        // // divide the array
+        // int halfData = data.length/2;
+        // // 1 from low to pivot the other from pivot to high
+        // int arrayL[] = new int[halfData];
+        // int arrayR[] = new int[data.length];
+        // // insert values into arrays, array /2 so from first to mid value
+        // for (int i = 0; i < halfData; i++) {
+        //     arrayL[i] = data[i];
+        //     // System.out.print(arrayL[i]);
+        // }
+        // // now array left is ok
+
+        // for (int i = halfData; i < data.length; i++) {
+        //     arrayR[i] = data[i];
+        //     // System.out.print(arrayR[i]);
+
+        // }
+
         if (low < high) {
-            // find the number at the middle
-            int mid = (high+low)/2;
-            // function calls itself until the low is not lower than higher
-            mergeSort(data, low, high);
-            // instead of the lower value adds the number at right of the mid = lowest value from right
-            mergeSort(data, mid+1, high);
-            // Merge these values once again
+            int mid = (low + high)/2;
+            mergeSort(data, low, mid);  
+            mergeSort(data, mid + 1, high);  
             merge(data, low, mid, high);
         }
 
+    }
+
+    public void sortMerge(int data[], int low, int mid, int high) {
+        int i, j, k;  
+        int n1 = mid - low + 1;    
+        int n2 = high - mid;    
+          
+        int LeftArray[] = new int[n1];
+        int RightArray[] = new int[n2]; //temporary arrays  
+          
+        /* copy data to temp arrays */  
+        for (int l = 0; l < n1; l++)    
+        LeftArray[l] = data[low + l];    
+        for (int m = 0; m < n2; m++)    
+        RightArray[m] = data[mid + 1 + m];    
+
+        i = 0; /* initial index of first sub-array */  
+        j = 0; /* initial index of second sub-array */   
+        k = low;  /* initial index of merged sub-array */  
+          
+        while (i < n1 && j < n2)    
+        {    
+            if(LeftArray[i] <= RightArray[j])    
+            {    
+                data[k] = LeftArray[i];    
+                i++;    
+            }    
+            else    
+            {    
+                data[k] = RightArray[j];    
+                j++;    
+            }    
+            k++;    
+        }    
+        while (i<n1)    
+        {    
+            data[k] = LeftArray[i];    
+            i++;    
+            k++;    
+        }    
+          
+        while (j<n2)    
+        {    
+            data[k] = RightArray[j];    
+            j++;    
+            k++;    
+        }    
+
+        System.out.print(data[0]);
+        // return data;
 
     }
 
     private void merge(int data[], int low, int mid, int high) {
-        // difference between mid and low value and mid and high
-        int n1 = mid - low - 1;
-        int n2 = high - mid;
-
-        // temp arrays
-        int leftArray[] = new int[12];
-        // int rightArray[] = new int[n2];
-
-        // insert data into temp arrays
-        for (int i = 0; i < leftArray.length; i++) {
-            leftArray[i] = data[low + i];
-            System.out.print(leftArray[i]);
-        }
-        // System.out.println("");
-        // for (int i = 0; i < n2 -1; i++) {
-        //     rightArray[i] = data[mid + i];
-        //     System.out.print(rightArray[i]);
+        // if (low < high) {
+        //     // find the number at the middle
+        //     int mid = (high+low)/2;
+        //     // function calls itself until the low is not lower than higher
+        //     mergeSort(data, low, high);
+        //     // instead of the lower value adds the number at right of the mid = lowest value from right
+        //     mergeSort(data, mid+1, high);
+        //     // Merge these values once again
+        //     merge(data, low, mid, high);
         // }
     }
 
