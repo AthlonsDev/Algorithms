@@ -9,10 +9,8 @@ public class MergeSorting {
         int length = array.length;
 
         MergeSorting obj = new MergeSorting();
-        System.out.println("\nBefore sorting array elements are - "); 
-        obj.PrintAll(array, length);
         obj.mergeSort(array, 0, length - 1);
-        System.out.println("\nAfter sorting array elements are - "); 
+        System.out.println("Sorted Array"); 
         obj.PrintAll(array, length);
 
 
