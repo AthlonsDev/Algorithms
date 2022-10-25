@@ -8,19 +8,17 @@ class Factorial {
 
         int n = sc.nextInt();
 
-        obj.FactorialNumber(n);
-
+        System.out.println("Factorial of "+ n + " is " + obj.FactorialNumber(n));
 
     }
 
-    private void FactorialNumber(int n) {
-        // n!(n-1)! in Recursive
-        // If n is 1 factorial ends
-        if (n == 1) {
-            return;
+    private int FactorialNumber(int n) {
+        // if or when n is equal 1 the code will stop and returns 1
+        if(n==1) {
+            return 1;
         }
-        // recursive to get n!
-        FactorialNumber(n * n-1);
+        // recursive call of the same function decreasing the variable by 1 and muplying it by the variable until it reaches 1
+        return n*FactorialNumber(n-1);
         
     }
 
