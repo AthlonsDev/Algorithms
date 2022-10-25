@@ -6,11 +6,12 @@ public class BinarySearch {
 
         BinarySearch obj = new BinarySearch();
         
-        int array[] = {1, 2, 3, 5, 6, 7 ,8};
+        int array[] = {3, 4, 5, 6, 7, 8, 9};
 
         int low = 0;
         int high = array.length-1;
-        int target = array.length-1;
+        // number to find in the array
+        int target = 8;
 
         obj.Binary(array, low, high, target);
 
@@ -19,11 +20,12 @@ public class BinarySearch {
 
     private void Binary(int[] array, int low, int high, int target) {
 
+        // find the middle of array
         int mid = (low+high)/2;
 
         // The target matches the index/mid number
         if(array[mid] == target) {
-            System.out.println("Index Found! " + array[target] + " is at index " + array[mid]);
+            System.out.println("Index Found! " + target + " is at index " + mid);
         }
         else {
             // target bigger than mid number = so look in the right side
@@ -35,6 +37,5 @@ public class BinarySearch {
                 Binary(array, low, mid-1, target);
             }
         }
-
     }
 }

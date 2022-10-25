@@ -18,7 +18,7 @@ class Factorial {
             return 1;
         }
         // recursive call of the same function decreasing the variable by 1 and muplying it by the variable until it reaches 1
-        return n*FactorialNumber(n-1);
+        return n * FactorialNumber(n-1);
         
     }
 
