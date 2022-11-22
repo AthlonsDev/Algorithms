@@ -57,31 +57,93 @@ class BTNode {
     }
 
     private void InOrder(BTNode root) {
-        if (root == null) {
+        if (root == null)
             return;
-        }
 
         InOrder(root.left);
-        System.out.print(root.data + " -> ");
+        System.out.print(" -> " + root.data);
         InOrder(root.right);
-        // System.out.print(root.left + " -> ");
 
     }
     
     public void inOrderTraversal() {
         InOrder(root);
-        // printTree(root);
     }
 
-    public String printTree() {
-        if(root == null) {
-            return "";
+    private void preOrder(BTNode root) {
+        if (root == null)  
+        return;
+
+        System.out.print(" -> " + root.data);  
+        preOrder(root.left);  
+        preOrder(root.right);  
+       
+    }
+
+    private void postOrder(BTNode root) {
+        if (root == null)  
+        return;
+
+        postOrder(root.left);       
+        postOrder(root.right);  
+        System.out.print(" -> " + root.data); 
+       
+    }
+
+    public void postOrderTraversal() {
+        postOrder(root);
+    }
+
+    public void preOrderTraversal() {
+        preOrder(root);
+    }
+
+    private int MinValue(BTNode root) {
+        System.out.println("node has 2 children " + root.data);
+        while(root.left != null) {
+            System.out.print(root.left.data);
+            root = root.left;
         }
-        String str = "";
-        inOrderTraversal();
-        return str;
-
+        System.out.print(root.data);
+        return root.data;
     }
-    
+
+    private BTNode DeleteNode(BTNode current, int key) {
+        if(current == null) {
+            return null;
+        }
+
+        if(key>current.data) {
+            current.right = DeleteNode(current.right, key);
+            return current;
+        }
+
+        if(key < current.data) {
+            current.left = DeleteNode(current.left, key);
+            return current;
+        }
+        // no children
+        if(current.left == null && current.right == null) {
+            return null;
+        }
+                // one child
+        if (current.right == null) {
+            return current.left;
+        }
+        if (current.left == null) {
+            return current.right;
+        }
+        if(current.left != null && current.right != null) {
+            current.key = MinValue(root.right);
+            current.right = DeleteNode(current.right, current.key);
+
+        }
+       
+        return current;
+    }
+
+    public void deleteNodeFromTree(int key) {
+        DeleteNode(root, key);
+    }
 }
 

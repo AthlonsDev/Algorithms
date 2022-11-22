@@ -6,16 +6,15 @@ public class BinaryTree {
 
         bin.createBinaryTree(bin);
 
-        System.out.print(bin.node.searchBT(4));
+        bin.node.deleteNodeFromTree(10);
 
         bin.node.inOrderTraversal();
-        // System.out.print("In order traversing the tree \n" + bin.node.inOrderTraversal());
-        
-        // bin.node.printTree();
 
-        // bin.node.searchBT(6);
+
+
     }
-
+    
+// calls method to insert node into the tree
     private BinaryTree createBinaryTree(BinaryTree bin) {
         bin.node.insert(8);
         bin.node.insert(3);
@@ -29,7 +28,7 @@ public class BinaryTree {
         return bin;
     }
 
-
+// Finds if number entered is part of the tree
     private boolean searchInTree(int key) {
         return node.searchBT(key);
     }
