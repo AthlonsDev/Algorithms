@@ -1,3 +1,7 @@
+    /**
+     * Author: Andrea Sanna u1612023
+     */
+
 class BTNode {
 
     int data;
@@ -99,9 +103,7 @@ class BTNode {
     }
 
     private int MinValue(BTNode root) {
-        System.out.println("node has 2 children " + root.data);
         while(root.left != null) {
-            System.out.print(root.left.data);
             root = root.left;
         }
         System.out.print(root.data);

@@ -1,10 +1,16 @@
+    /**
+     * Author: Andrea Sanna u1612023
+     */
 public class BinaryTree {
+
     BTNode node = new BTNode(5);
     public static void main(String[] args) {
         
         BinaryTree bin = new BinaryTree();
 
         bin.createBinaryTree(bin);
+
+        bin.node.inOrderTraversal();
 
         bin.node.deleteNodeFromTree(10);
 

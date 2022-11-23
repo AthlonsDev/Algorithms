@@ -21,7 +21,47 @@ public class Algorithms {
         int array1[] = {2,7,11,15};
         // int[] sum = myObj.twoSum(array1, 9);
         // System.out.println(Arrays.toString(sum));
-        myObj.stepsPerCost();
+        // myObj.stepsPerCost();
+        simpleArraySum();
+        List<Integer> a = new ArrayList<Integer>(3);
+        a.add(1);
+        a.add(2);
+        a.add(3);
+        List<Integer> b = new ArrayList<Integer>(3);
+        b.add(3);
+        b.add(2);
+        b.add(1);
+
+        compareTriplets(a, b);
+    }
+
+    public static List<Integer> compareTriplets(List<Integer> a, List<Integer> b) {
+        int aScore = 0;
+        int bScore = 0;
+         ArrayList<Integer> list = new ArrayList<Integer>();
+        for(int i = 0; i<a.size(); i++) {
+            if (a.get(i)>b.get(i)) {
+                aScore++;
+            }
+            if (a.get(i)<b.get(i)) {
+                bScore++;
+            }
+        }
+        list.add(aScore);
+        list.add(bScore);
+        System.out.println(list);
+        return list;
+    }
+
+    public static void simpleArraySum() {
+        int[] ar = {1, 2, 3, 4, 10, 11};
+        // Write your code here
+        int result = 0;
+        for (int i : ar) {
+            result += i;
+            System.out.println(result);
+        }
+       
     }
 
     public void stepsPerCost() {
