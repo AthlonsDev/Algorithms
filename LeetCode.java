@@ -5,7 +5,56 @@ import java.util.*;
 public class LeetCode {
     public static void main(String[] args) {
         int[] lines = {3,2,2,3};
-        System.out.println(strStr("sadbutsat", "but"));
+        // System.out.println(strStr("sadbutsat", "but"));
+        String s = "pwwkew";
+        // System.out.println(lengthOfLongestSubstring(s));
+        String roman = "III";
+        romanToInt(roman);
+    }
+
+    public static int romanToInt(String s) {
+        
+        HashMap <Character,Integer> map = new HashMap<Character,Integer>();
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        int count = 0;
+        map.get(1);
+        for (int i = 0; i < s.length(); i++) {
+            if(map.containsValue(s.charAt(i))) {
+               System.out.println(map.get('I'));
+
+            }
+        }
+        
+        return count;
+    }
+
+    public static int lengthOfLongestSubstring(String s) {
+        // it works but not substring
+        int count = 1;
+        String temp = "";
+        HashMap <Integer,Character> map = new HashMap<Integer, Character>();
+        // temp = s.codePointAt(count)
+        map.put(0, s.charAt(0));
+
+        for (int i = 1; i < s.length(); i++) {
+            if(!(map.containsValue(s.charAt(i)))) {
+                // System.out.println(s.charAt(i));
+                // count++;
+                temp = temp.substring(i);
+                System.out.println(temp);
+            }
+            map.put(i, s.charAt(i));
+        }
+
+        if(s.contains(temp)) {
+            count = temp.length();
+        } else{
+            count = temp.length()-1;
+        }
+        System.out.print(temp);
+        return count;
     }
 
     public static int strStr(String haystack, String needle) {
