@@ -9,7 +9,32 @@ public class LeetCode {
         String s = "pwwkew";
         // System.out.println(lengthOfLongestSubstring(s));
         String roman = "III";
-        romanToInt(roman);
+        // romanToInt(roman);
+
+        String words[] = {"aabb","ab","ba"};
+        // similarPairs(words);
+        System.out.println(isPalindrome(121));
+
+    }
+
+    public static boolean isPalindrome(int x) {
+        // get length of int using logarithm
+        
+        String s = Integer.toString(x);
+        StringBuilder sb = new StringBuilder(s);
+        sb.reverse();
+        String rev = sb.toString();
+
+        System.out.println(s);
+        System.out.println(rev);
+
+        if (s.equals(rev)) {
+            return true;
+        }
+        else{
+            return false;
+        }
+
     }
 
     public static int romanToInt(String s) {
@@ -27,6 +52,25 @@ public class LeetCode {
             }
         }
         
+        return count;
+    }
+
+    public static int similarPairs(String[] words) {
+        
+        int count = 0;
+        HashMap <Integer,Character> map = new HashMap<Integer, Character>();
+        for (int i = 0; i < words.length-1; i++) {
+            if (!(map.containsValue(words[i].charAt(i)))) {
+                map.put(i, words[i].charAt(i));
+            }
+            System.out.println(words[i+1]);
+            if (map.containsValue(words[i+1].charAt(i))) {
+                // System.out.println(map.get(i));
+                count++;
+            } 
+        }
+
+        System.out.println(count);
         return count;
     }
 
