@@ -1,5 +1,7 @@
 import java.util.Arrays;
 import java.util.regex.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.*;
 
 public class LeetCode {
@@ -13,8 +15,62 @@ public class LeetCode {
 
         String words[] = {"aabb","ab","ba"};
         // similarPairs(words);
-        System.out.println(isPalindrome(121));
+        // System.out.println(isPalindrome(121));
 
+        // staircase(26);
+
+        List<Integer> n = new ArrayList<Integer>();
+        n.add(156873294);
+        n.add(719583602);
+        n.add(581240736);
+        n.add(605827319);
+        n.add(895647130);
+        miniMaxSum(n);
+
+    }
+
+    public static void miniMaxSum(List<Integer> arr) {
+        // Write your code here
+        List<Integer> sortedList = arr.stream().sorted().collect(Collectors.toList());
+        // System.out.println(sortedList);
+
+
+        // sum first 4 numbers to get the smallest number
+        long min = 0;
+        for (int i = 0; i < sortedList.size() - 1; i++) {
+            min += sortedList.get(i);
+        }
+
+        // sum last 4 numbers to get biggest number
+        long max = 0;
+        for (int i = sortedList.size()-1; i >= 1; i--) {
+            max += sortedList.get(i);
+        }
+        
+        System.out.println(min + " " + max);
+
+    }
+    
+
+    public static void staircase(int n) {
+        // Write your code here
+        String count = "#";
+        String spaces = " ";
+        StringBuilder sb = new StringBuilder(spaces);
+
+            for (int i = 0; i < n-2; i++) {
+                sb.append(" ");
+            }        
+
+            for(int i = 0; i < count.length(); i++) {
+                if (!(count.length() > n)) {
+                    System.out.println(sb + count);
+                    count += "#";
+                    if(!(sb.length() == 0)) {
+                        sb.setLength(sb.length()-1);
+                    }
+                }
+            }
     }
 
     public static boolean isPalindrome(int x) {
